@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joker — Book Posters</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: Inter, sans-serif; background:#09090d; color:#f5f5f5; }
+    .logo { font-family: Creepster, cursive; }
+    .poster { transition:transform .3s, border-color .3s; }
+    .poster:hover { transform:translateY(-5px); border-color:#dc2626; }
+    .poster-image { transition:transform .5s; }
+    .poster:hover .poster-image { transform:scale(1.04); }
+    .red-glow { text-shadow:0 0 25px #dc262655; }
+    .modal-bg { background:#000c; backdrop-filter:blur(8px); }
+  </style>
+</head>
+
+<body>
+<header class="sticky top-0 z-30 bg-[#09090d]/95 border-b border-white/10 backdrop-blur">
+  <nav class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center gap-4">
+    <a href="#" class="logo text-4xl text-red-600">JOKER<span class="text-white">.</span></a>
+    <div class="hidden md:flex gap-7 text-sm text-gray-300">
+      <a href="#inicio" class="hover:text-red-500">Início</a>
+      <a href="#galeria" class="hover:text-red-500">Galeria</a>
+      <a href="#publicar" class="hover:text-red-500">Publicar</a>
+    </div>
+    <a href="#publicar" class="bg-red-700 hover:bg-red-600 px-4 py-2 rounded-lg text-sm font-bold">+ Publicar</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="inicio" class="relative overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-950/70 via-[#09090d] to-black"></div>
+    <div class="relative max-w-7xl mx-auto px-5 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-red-500 uppercase tracking-[.35em] text-xs font-bold">Manga • Art • Darkness</p>
+        <h1 class="logo text-7xl md:text-9xl mt-5 leading-none red-glow">
+          ENTER THE<br><span class="text-red-600">MADNESS.</span>
+        </h1>
+        <p class="text-gray-400 mt-6 max-w-lg leading-7">
+          Um universo de pôsteres de mangá, personagens marcantes e
+          arte sombria. Publique sua criação e descubra artistas.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="#galeria" class="bg-red-700 hover:bg-red-600 px-6 py-3 rounded-lg font-bold">Explorar pôsteres</a>
+          <a href="#publicar" class="border border-white/20 hover:border-red-500 px-6 py-3 rounded-lg">Enviar arte</a>
+        </div>
+      </div>
+      <div class="relative mx-auto w-full max-w-sm">
+        <div class="absolute -inset-3 bg-red-700/20 blur-3xl"></div>
+        <div class="relative border border-red-900 rounded-2xl overflow-hidden bg-[#151015] p-6 text-center min-h-[430px] flex flex-col justify-between">
+          <p class="text-red-500 tracking-[.4em] text-xs">NO RULES. NO FEAR.</p>
+          <div>
+            <div class="text-9xl">♠</div>
+            <div class="logo text-6xl text-red-600 mt-3">THE JESTER</div>
+            <p class="text-gray-400 text-xs tracking-[.3em] mt-3">WELCOME TO THE DARK SIDE</p>
+          </div>
+          <p class="text-xs text-gray-600">JESTER ART COMMUNITY / 001</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria" class="max-w-7xl mx-auto px-5 py-16">
+    <div class="flex flex-col md:flex-row justify-between md:items-end gap-5">
+      <div>
+        <p class="text-red-500 text-xs tracking-[.3em] font-bold">ART GALLERY</p>
+        <h2 class="text-4xl font-extrabold mt-2">Galeria <span class="text-red-600">sombria.</span></h2>
+        <p class="text-gray-500 mt-3">Artes compartilhadas pela comunidade.</p>
+      </div>
+      <input id="search" placeholder="Buscar pôster..."
+        class="bg-[#141419] border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-red-600 w-full md:w-64">
+    </div>
+
+    <div class="flex gap-2 flex-wrap mt-7">
+      <button data-filter="Todos" class="filter bg-red-700 px-4 py-2 rounded-full text-sm">Todos</button>
+      <button data-filter="Terror" class="filter bg-white/5 hover:bg-red-900 px-4 py-2 rounded-full text-sm">Terror</button>
+      <button data-filter="Ação" class="filter bg-white/5 hover:bg-red-900 px-4 py-2 rounded-full text-sm">Ação</button>
+      <button data-filter="Sombrio" class="filter bg-white/5 hover:bg-red-900 px-4 py-2 rounded-full text-sm">Sombrio</button>
+      <button data-filter="Fantasia" class="filter bg-white/5 hover:bg-red-900 px-4 py-2 rounded-full text-sm">Fantasia</button>
+    </div>
+
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-9"></div>
+    <p id="empty" class="hidden text-center text-gray-500 py-16">Nenhum pôster encontrado.</p>
+  </section>
+
+  <!-- PUBLICAR -->
+  <section id="publicar" class="border-y border-white/10 bg-[#101015]">
+    <div class="max-w-4xl mx-auto px-5 py-16">
+      <p class="text-red-500 text-xs tracking-[.3em] font-bold">YOUR ART. YOUR RULES.</p>
+      <h2 class="text-4xl font-extrabold mt-3">Publique seu <span class="text-red-600">pôster.</span></h2>
+      <p class="text-gray-400 mt-3">Compartilhe sua arte de mangá com a comunidade.</p>
+
+      <form id="publishForm" class="mt-8 grid md:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm mb-2" for="title">Título da arte *</label>
+          <input id="title" required maxlength="100" placeholder="Ex.: Sorriso da meia-noite"
+            class="w-full bg-black border border-white/10 rounded-lg p-3 focus:border-red-600 outline-none">
+        </div>
+        <div>
+          <label class="block text-sm mb-2" for="artist">Nome do artista *</label>
+          <input id="artist" required maxlength="60" placeholder="Seu nome ou apelido"
+            class="w-full bg-black border border-white/10 rounded-lg p-3 focus:border-red-600 outline-none">
+        </div>
+        <div>
+          <label class="block text-sm mb-2" for="category">Categoria *</label>
+          <select id="category" required class="w-full bg-black border border-white/10 rounded-lg p-3">
+            <option value="">Escolha uma categoria</option>
+            <option>Terror</option>
+            <option>Ação</option>
+            <option>Sombrio</option>
+            <option>Fantasia</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-2" for="image">Imagem do pôster *</label>
+          <input id="image" type="file" accept="image/jpeg,image/png,image/webp" required
+            class="w-full text-sm text-gray-400 bg-black border border-white/10 rounded-lg p-3">
+          <p class="text-xs text-gray-500 mt-2">Imagem de até 2 MB nesta versão.</p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-2" for="description">Descrição</label>
+          <textarea id="description" maxlength="500" rows="3" placeholder="Conte algo sobre a sua arte..."
+            class="w-full bg-black border border-white/10 rounded-lg p-3 outline-none focus:border-red-600"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button class="bg-red-700 hover:bg-red-600 px-7 py-3 rounded-lg font-bold" type="submit">
+            Publicar pôster
+          </button>
+          <p id="status" role="status" class="text-sm mt-3 text-gray-400"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="px-5 py-8 text-center text-xs text-gray-600">
+  JESTER © 2026 — Manga Poster Community
+</footer>
+
+<script>
+  const STORAGE_KEY = 'jester-posters-v1';
+  const gallery = document.getElementById('gallery');
+  const form = document.getElementById('publishForm');
+  const status = document.getElementById('status');
+  const search = document.getElementById('search');
+  const empty = document.getElementById('empty');
+
+  let posters = [];
+  let activeFilter = 'Todos';
+
+  try {
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    if (Array.isArray(stored)) posters = stored;
+  } catch {}
+
+  // Artes de demonstração: use imagens próprias ao publicar.
+  const samples = [
+    {id:'demo1',title:'Red Smile',artist:'Jester Studio',category:'Sombrio',
+     description:'Arte conceitual em vermelho e preto.',demo:true,
+     image:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80'},
+    {id:'demo2',title:'Dark Dreams',artist:'Noir',category:'Terror',
+     description:'Uma atmosfera misteriosa.',demo:true,
+     image:'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=80'},
+    {id:'demo3',title:'Crimson Night',artist:'Kuro',category:'Fantasia',
+     description:'Uma noite de fantasia sombria.',demo:true,
+     image:'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=700&q=80'},
+    {id:'demo4',title:'Shadow',artist:'Akira Art',category:'Ação',
+     description:'Composição escura de inspiração cinematográfica.',demo:true,
+     image:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80'}
+  ];
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posters));
+      return true;
+    } catch {
+      status.textContent = 'Armazenamento cheio. Tente uma imagem menor.';
+      return false;
+    }
+  }
+
+  function safeElement(tag, className, text) {
+    const el = document.createElement(tag);
+    el.className = className;
+    el.textContent = text;
+    return el;
+  }
+
+  function render() {
+    gallery.replaceChildren();
+    const term = search.value.trim().toLowerCase();
+    const all = [...posters, ...samples];
+    const filtered = all.filter(p =>
+      (activeFilter === 'Todos' || p.category === activeFilter) &&
+      (p.title.toLowerCase().includes(term) ||
+       p.artist.toLowerCase().includes(term) ||
+       p.category.toLowerCase().includes(term))
+    );
+
+    empty.classList.toggle('hidden', filtered.length > 0);
+
+    filtered.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'poster bg-[#131318] border border-white/10 rounded-xl overflow-hidden';
+
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'overflow-hidden aspect-[3/4] bg-black';
+
+      const img = document.createElement('img');
+      img.src = p.image;
+      img.alt = p.title;
+      img.loading = 'lazy';
+      img.className = 'poster-image w-full h-full object-cover';
+      imgWrap.appendChild(img);
+
+      const body = document.createElement('div');
+      body.className = 'p-3';
+
+      body.appendChild(safeElement('p','text-red-500 text-xs uppercase tracking-wider',p.category));
+      body.appendChild(safeElement('h3','font-bold mt-2 truncate',p.title));
+      body.appendChild(safeElement('p','text-gray-500 text-xs mt-1','Por '+p.artist));
+
+      const actions = document.createElement('div');
+      actions.className = 'flex items-center justify-between gap-2 mt-4';
+
+      const like = document.createElement('button');
+      like.className = 'text-sm border border-white/10 rounded-lg px-3 py-2 hover:border-red-600';
+      like.textContent = '♥ '+(p.likes || 0);
+      like.setAttribute('aria-label','Curtir '+p.title);
+      like.addEventListener('click', () => {
+        if (p.demo) {
+          alert('Esta é uma publicação de demonstração.');
+          return;
+        }
+        p.likes = p.likes || 0;
+        p.likes++;
+        if (save()) render();
+      });
+
+      const share = document.createElement('button');
+      share.className = 'text-sm text-gray-300 hover:text-red-500 px-2 py-2';
+      share.textContent = 'Compartilhar';
+      share.addEventListener('click', async () => {
+        const shareData = {title:p.title,text:'Confira este pôster de '+p.artist};
+        if (navigator.share) {
+          try { await navigator.share(shareData); } catch {}
+        } else {
+          try {
+            await navigator.clipboard.writeText(shareData.text);
+            share.textContent = 'Texto copiado!';
+          } catch {
+            alert(shareData.text);
+          }
+        }
+      });
+
+      actions.append(like,share);
+      body.appendChild(actions);
+      card.append(imgWrap,body);
+      gallery.appendChild(card);
+    });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const file = document.getElementById('image').files[0];
+
+    if (!file || !file.type.startsWith('image/')) {
+      status.textContent = 'Escolha uma imagem válida.';
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      status.textContent = 'A imagem deve ter no máximo 2 MB.';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const poster = {
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        title: document.getElementById('title').value.trim(),
+        artist: document.getElementById('artist').value.trim(),
+        category: document.getElementById('category').value,
+        description: document.getElementById('description').value.trim(),
+        image: reader.result,
+        likes: 0
+      };
+
+      posters.unshift(poster);
+      if (!save()) {
+        posters.shift();
+        return;
+      }
+
+      form.reset();
+      status.textContent = 'Pôster publicado neste navegador.';
+      activeFilter = 'Todos';
+      document.querySelectorAll('.filter').forEach(b => {
+        b.classList.toggle('bg-red-700', b.dataset.filter === 'Todos');
+        b.classList.toggle('bg-white/5', b.dataset.filter !== 'Todos');
+      });
+      render();
+      document.getElementById('galeria').scrollIntoView({behavior:'smooth'});
+    };
+    reader.onerror = () => status.textContent = 'Não foi possível ler a imagem.';
+    reader.readAsDataURL(file);
+  });
+
+  document.querySelectorAll('.filter').forEach(button => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll('.filter').forEach(b => {
+        b.classList.toggle('bg-red-700', b === button);
+        b.classList.toggle('bg-white/5', b !== button);
+      });
+      render();
+    });
+  });
+
+  search.addEventListener('input', render);
+  render();
+</script>
+</body>
+</html>
